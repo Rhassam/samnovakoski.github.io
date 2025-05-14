@@ -630,22 +630,6 @@
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
-                
-                <!-- Projeto 3 
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Fotografia">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Comercial</div>
-                        <h3 class="project-title">Natureza Produto</h3>
-                        <p class="project-description">Fotografia de produtos integrados ao ambiente natural.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Seção de Vídeos -->
     <section id="video" class="section">
@@ -655,18 +639,6 @@
                 <p>Do conceito à edição final, crio narrativas visuais em movimento que capturam a essência do seu projeto com técnicas profissionais avançadas de edição.</p>
             </div>
             <div class="project-grid">
-                <!-- Projeto 1 
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Vídeo">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Anúncios para Marketing Digital</div>
-                        <h3 class="project-title">Criativos para Infoprodutos</h3>
-                        <p class="project-description">Uma jornada visual pela transformação das cidades.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div> -->
                 
                 <!-- Projeto 2 -->
                 <div class="project-item">
@@ -681,22 +653,6 @@
                     </div>
                 </div>
                 
-                <!-- Projeto 3
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Vídeo">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Música</div>
-                        <h3 class="project-title">Videoclipe Conceitual</h3>
-                        <p class="project-description">Narrativa visual que complementa a composição musical.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <!-- Seção de Motion Design -->
     <section id="motion" class="section">
         <div class="container">
@@ -780,22 +736,6 @@
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
-                
-                <!-- Projeto 3 
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto Criativo">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Conceitual</div>
-                        <h3 class="project-title">Série Abstrata</h3>
-                        <p class="project-description">Experimentação visual explorando conceitos abstratos.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Seção Sobre -->
     <section id="about" class="section">
@@ -972,4 +912,61 @@
                 
                 <nav class="footer-nav">
                     <ul>
-                        
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#photography">Fotografia</a></li>
+                        <li><a href="#video">Vídeos</a></li>
+                        <li><a href="#motion">Motion Design</a></li>
+                        <li><a href="#creative">Criativos</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Sam Novakoski. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu mobile toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Efeito de scroll do cabeçalho
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Suavização de Scroll pelos links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
