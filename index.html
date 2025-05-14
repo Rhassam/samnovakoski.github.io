@@ -11,7 +11,6 @@
   gtag('config', 'G-1VW2ZBK90V');
 </script>
 
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,6 +75,12 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
         }
         
         .logo span {
@@ -96,10 +101,28 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
         }
         
         nav ul li a:hover,
@@ -111,6 +134,11 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-toggle:hover {
+            transform: scale(1.1);
         }
         
         /* Seção Hero */
@@ -126,6 +154,20 @@
         
         .hero-content {
             max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h1 {
@@ -153,16 +195,43 @@
             letter-spacing: 1px;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
             background-color: #d23240;
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
         }
         
         /* Seção de Projetos */
         .section {
             padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title {
@@ -200,6 +269,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
+            justify-items: center;
         }
         
         .project-item {
@@ -209,31 +279,52 @@
             background-color: var(--secondary);
             height: 350px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 350px;
         }
         
         .project-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         
         .project-image {
             height: 65%;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(230, 57, 70, 0);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .project-item:hover .project-image::before {
+            background-color: rgba(230, 57, 70, 0.2);
         }
         
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
         }
         
         .project-item:hover .project-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .project-info {
             padding: 1.5rem;
+            position: relative;
         }
         
         .project-category {
@@ -242,12 +333,18 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
         
         .project-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             line-height: 1.3;
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover .project-title {
+            color: var(--accent);
         }
         
         .project-description {
@@ -263,15 +360,20 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link span {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
         }
         
         .project-link:hover {
             color: var(--accent);
         }
         
-        .project-link span {
-            margin-left: 0.5rem;
+        .project-link:hover span {
+            transform: translateX(5px);
         }
         
         /* Seções específicas */
@@ -299,18 +401,54 @@
             height: 450px;
             border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(230, 57, 70, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+        
+        .about-image:hover::before {
+            opacity: 1;
         }
         
         .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
         }
         
         .about-text h3 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
         }
         
         .about-text p {
@@ -336,11 +474,14 @@
             background-color: var(--highlight);
             border-radius: 3px;
             overflow: hidden;
+            position: relative;
         }
         
         .skill-level {
             height: 100%;
+            width: 0;
             background-color: var(--accent);
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
         
         /* Contato */
@@ -358,6 +499,18 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
         }
         
         .contact-info p {
@@ -368,6 +521,11 @@
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
         }
         
         .contact-icon {
@@ -379,22 +537,35 @@
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon {
+            background-color: var(--accent);
+            transform: rotate(360deg);
         }
         
         .contact-icon i {
             color: var(--accent);
             font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon i {
+            color: var(--text);
         }
         
         /* Formulário */
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
         
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         input, textarea {
@@ -405,17 +576,24 @@
             border-radius: 4px;
             color: var(--text);
             font-family: 'Montserrat', sans-serif;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.2);
         }
         
         textarea {
             min-height: 150px;
             resize: vertical;
+        }
+        
+        /* Animação do formulário */
+        .form-group input:focus + label,
+        .form-group textarea:focus + label {
+            color: var(--accent);
         }
         
         /* Rodapé */
@@ -455,17 +633,23 @@
             align-items: center;
             justify-content: center;
             margin: 0 0.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
         
         .social-link:hover {
             background-color: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         .social-link i {
             color: var(--text);
             font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover i {
+            transform: scale(1.2);
         }
         
         .footer-nav {
@@ -533,7 +717,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 5rem 2rem;
-                transition: right 0.3s ease;
+                transition: all 0.3s ease;
                 z-index: 99;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
             }
@@ -617,10 +801,10 @@
                 <p>Capturo histórias através das lentes, criando imagens que expressam emoção.</p>
             </div>
             <div class="project-grid">
-                <!-- Projeto 1 -->
+                <!-- Projeto de Fotografia -->
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Fotografia">
+                        <img src="/api/placeholder/600/400" alt="Série Eventos">
                     </div>
                     <div class="project-info">
                         <div class="project-category">Eventos</div>
@@ -629,19 +813,9 @@
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
-                
-                <!-- Projeto 2 -->
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Fotografia">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Retratos</div>
-                        <h3 class="project-title">Contrastes</h3>
-                        <p class="project-description">Um estudo visual sobre luz e sombra em ambientes internos.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Seção de Vídeos -->
     <section id="video" class="section">
@@ -651,11 +825,10 @@
                 <p>Do conceito à edição final, crio narrativas visuais em movimento que capturam a essência do seu projeto com técnicas profissionais avançadas de edição.</p>
             </div>
             <div class="project-grid">
-                
-                <!-- Projeto 2 -->
+                <!-- Projeto de Vídeo -->
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Vídeo">
+                        <img src="/api/placeholder/600/400" alt="Canal Leandro Ladeira">
                     </div>
                     <div class="project-info">
                         <div class="project-category">Vídeos para Youtube</div>
@@ -664,7 +837,10 @@
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+    </section>
+    
     <!-- Seção de Motion Design -->
     <section id="motion" class="section">
         <div class="container">
@@ -673,41 +849,15 @@
                 <p>Animações e elementos visuais dinâmicos que dão vida às ideias e elevam a experiência visual do espectador.</p>
             </div>
             <div class="project-grid">
-                <!-- Projeto 1 -->
+                <!-- Projeto de Motion Design -->
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Motion Design">
+                        <img src="/api/placeholder/600/400" alt="Identidade Animada">
                     </div>
                     <div class="project-info">
                         <div class="project-category">Animação 2D</div>
                         <h3 class="project-title">Identidade Animada</h3>
                         <p class="project-description">Logo animations e elementos de marca em movimento.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
-                
-                <!-- Projeto 2 -->
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Motion Design">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Motion Graphics</div>
-                        <h3 class="project-title">Infográficos Animados</h3>
-                        <p class="project-description">Visualização de dados de forma dinâmica e impactante.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
-                
-                <!-- Projeto 3 -->
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto de Motion Design">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Título/Créditos</div>
-                        <h3 class="project-title">Sequência de Abertura</h3>
-                        <p class="project-description">Design de título e créditos para produções audiovisuais.</p>
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
@@ -723,33 +873,23 @@
                 <p>Produções que combinam estratégia e estética para transmitir mensagens de forma impactante.</p>
             </div>
             <div class="project-grid">
-                <!-- Projeto 1 -->
+                <!-- Projeto Criativo -->
                 <div class="project-item">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto Criativo">
+                        <img src="/api/placeholder/600/400" alt="Infoprodutos">
                     </div>
                     <div class="project-info">
                         <div class="project-category">Infoprodutos</div>
-                        <h3 class="project-title">Criativos para divulgação de infoprodutos no perpétuo</h3>
+                        <h3 class="project-title">Criativos para divulgação de infoprodutos</h3>
                         <p class="project-description">Criativos produzidos para captação de leads com visuais impactantes.</p>
                         <a href="#" class="project-link">Ver Projeto <span>→</span></a>
                     </div>
                 </div>
-                
-                <!-- Projeto 2 -->
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Projeto Criativo">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-category">Social Media</div>
-                        <h3 class="project-title">Identidade Visual em movimento</h3>
-                        <p class="project-description">Animação de identidade visual e desenvolvimento do conceito de animação.</p>
-                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Seção Sobre -->
+     <!-- Seção Sobre -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-title">
@@ -831,8 +971,8 @@
             </div>
         </div>
     </section>
-
-   <!-- Seção Contato -->
+	
+ <!-- Seção Contato -->
     <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
@@ -900,36 +1040,7 @@
                         </div>
     
                         <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
-                    
-                    <!--
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form> -->
-
-
-            // formulário integrado com o Formspree
-                    
+                    </form>                    
                 </div>
             </div>
         </div>
@@ -1063,4 +1174,6 @@
 });
     </script>
 </body>
-</html>
+</html>	
+								
+								
