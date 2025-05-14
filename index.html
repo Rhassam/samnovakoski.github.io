@@ -997,6 +997,29 @@
             alert('Mensagem enviada com sucesso! Em breve entrarei em contato.');
             this.reset();
         });
+        
+    //Adicionando um slideshow de fotos no cabeçalho
+        document.addEventListener('DOMContentLoaded', function() {
+    // Array com caminhos para suas imagens de cabeçalho
+    const headerImages = [
+        'images/header1.jpg',
+        'images/header2.jpg',
+        'images/header3.jpg',
+        'images/header4.jpg'
+    ];
+    
+    let currentImageIndex = 0;
+    const heroSection = document.querySelector('.hero');
+    
+    // Função para trocar a imagem
+    function changeBackgroundImage() {
+        currentImageIndex = (currentImageIndex + 1) % headerImages.length;
+        heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${headerImages[currentImageIndex]}')`;
+    }
+    
+    // Inicia o slideshow e troca a imagem a cada 5 segundos
+    setInterval(changeBackgroundImage, 5000);
+});
     </script>
 </body>
 </html>
