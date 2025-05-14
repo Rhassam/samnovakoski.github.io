@@ -746,7 +746,7 @@
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="/api/placeholder/600/800" alt="Seu Nome">
+                    <img src="/api/placeholder/600/800" alt="Sam Novakoski">
                 </div>
                 <div class="about-text">
                     <h3>Olá, sou Sam Novakoski</h3>
@@ -820,55 +820,55 @@
         </div>
     </section>
 
-    <!-- Seção de Contato -->
+   <!-- Seção Contato -->
     <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
                 <h2>Contato</h2>
-                <p>Vamos trabalhar juntos? Entre em contato para discutirmos seu próximo projeto.</p>
+                <p>Gostou do meu trabalho? Entre em contato para conversarmos sobre o seu projeto.</p>
             </div>
             <div class="contact-content">
                 <div>
                     <div class="contact-info">
-                        <h3>Informações de Contato</h3>
-                        <p>Estou disponível para freelance, parcerias e projetos colaborativos. Entre em contato através dos canais abaixo.</p>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i>📧</i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>samcontato@proton.me</p>
-                            </div>
+                        <h3>Vamos trabalhar juntos</h3>
+                        <p>Estou sempre aberto a novos projetos e oportunidades criativas. Use um dos canais abaixo para entrar em contato.</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>✉</i>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i>📱</i>
-                            </div>
-                            <div>
-                                <h4>Telefone</h4>
-                                <p>+55 (99) 99118-1892</p>
-                            </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contato@samnovakoski.com.br</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i>📍</i>
-                            </div>
-                            <div>
-                                <h4>Localização</h4>
-                                <p>Taguatinga Norte, Distrito Federal - Brasil</p>
-                            </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📱</i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>+55 (11) 98765-4321</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📍</i>
+                        </div>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>São Paulo, SP - Brasil</p>
                         </div>
                     </div>
                 </div>
                 
                 <div>
-                    <form>
+                    <form id="contact-form">
                         <div class="form-group">
-                            <label for="name">Nome Completo</label>
+                            <label for="name">Nome</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         
@@ -879,7 +879,7 @@
                         
                         <div class="form-group">
                             <label for="subject">Assunto</label>
-                            <input type="text" id="subject" name="subject">
+                            <input type="text" id="subject" name="subject" required>
                         </div>
                         
                         <div class="form-group">
@@ -899,73 +899,103 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    Seu<span>Nome</span>
+                    Sam<span>Novakoski</span>
                 </div>
-                <p>Criando experiências visuais memoráveis desde 20XX.</p>
+                <p>Criando experiências visuais impactantes</p>
                 
                 <div class="social-links">
                     <a href="#" class="social-link"><i>📸</i></a>
                     <a href="#" class="social-link"><i>🎬</i></a>
-                    <a href="#" class="social-link"><i>👨‍💼</i></a>
-                    <a href="#" class="social-link"><i>🐦</i></a>
+                    <a href="#" class="social-link"><i>👤</i></a>
+                    <a href="#" class="social-link"><i>🔗</i></a>
                 </div>
-                
-                <nav class="footer-nav">
-                    <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#photography">Fotografia</a></li>
-                        <li><a href="#video">Vídeos</a></li>
-                        <li><a href="#motion">Motion Design</a></li>
-                        <li><a href="#creative">Criativos</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </nav>
             </div>
+            
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#photography">Fotografia</a></li>
+                    <li><a href="#video">Vídeos</a></li>
+                    <li><a href="#motion">Motion Design</a></li>
+                    <li><a href="#creative">Criativos</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            
             <div class="copyright">
                 &copy; 2025 Sam Novakoski. Todos os direitos reservados.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script>
-        // Menu mobile toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navMenu = document.querySelector('nav ul');
-        
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        // Navegação Scroll Suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Fechar menu mobile ao clicar
+                if (document.querySelector('nav ul').classList.contains('active')) {
+                    document.querySelector('nav ul').classList.remove('active');
+                }
+            });
         });
         
-        // Efeito de scroll do cabeçalho
-        window.addEventListener('scroll', () => {
+        // Menu Mobile Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Header Scroll
+        window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
         
-        // Suavização de Scroll pelos links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Animação de elementos na rolagem
+        const sections = document.querySelectorAll('.section');
+        const skillBars = document.querySelectorAll('.skill-level');
+        
+        function checkVisible() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
                 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('visible');
                     
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
+                    // Animar barras de habilidades se estiver na seção Sobre
+                    if (section.id === 'about') {
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width;
+                        });
+                    }
                 }
             });
+        }
+        
+        // Checar elementos visíveis no carregamento inicial e durante o scroll
+        window.addEventListener('load', checkVisible);
+        window.addEventListener('scroll', checkVisible);
+        
+        // Formulário de contato
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você pode adicionar lógica para enviar o formulário via AJAX
+            alert('Mensagem enviada com sucesso! Em breve entrarei em contato.');
+            this.reset();
         });
     </script>
 </body>
