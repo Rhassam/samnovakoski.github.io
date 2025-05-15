@@ -960,6 +960,7 @@
                     <div class="skill-item">
                         <div class="skill-info">
                             <span>Design</span>
+                            
                             <span>85%</span>
                         </div>
                         <div class="skill-bar">
@@ -1137,15 +1138,6 @@
         // Checar elementos visíveis no carregamento inicial e durante o scroll
         window.addEventListener('load', checkVisible);
         window.addEventListener('scroll', checkVisible);
-        
-        // Formulário de contato
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aqui você pode adicionar lógica para enviar o formulário via AJAX
-            alert('Mensagem enviada com sucesso! Em breve entrarei em contato.');
-            this.reset();
-        });
     </script>
 </body>
 </html>
