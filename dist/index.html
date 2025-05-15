@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VW2ZBK90V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1VW2ZBK90V');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Sam Novakoski</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+        /* Importando fontes */
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Variáveis de cores */
+        :root {
+            --background: #000000;
+            --text: #f0f0f0;
+            --accent: #e63946;
+            --secondary: #252525;
+            --highlight: #4a4a4a;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        /* Cabeçalho */
+        header {
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(15, 15, 15, 0.95);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #252525;
+        }
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        /* Navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent);
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .mobile-toggle:hover {
+            transform: scale(1.1);
+        }
+        /* Seção Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn:hover {
+            background-color: #d23240;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+        /* Seção de Projetos */
+        .section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 60px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #a0a0a0;
+        }
+        /* Galeria de projetos */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            background-color: var(--secondary);
+            height: 350px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 350px;
+        }
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .project-image {
+            height: 65%;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(230, 57, 70, 0);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        .project-item:hover .project-image::before {
+            background-color: rgba(230, 57, 70, 0.2);
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .project-item:hover .project-image img {
+            transform: scale(1.08);
+        }
+        .project-info {
+            padding: 1.5rem;
+            position: relative;
+        }
+        .project-category {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            transition: all 0.3s ease;
+        }
+        .project-item:hover .project-title {
+            color: var(--accent);
+        }
+        .project-description {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+        }
+        .project-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .project-link span {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .project-link:hover {
+            color: var(--accent);
+        }
+        .project-link:hover span {
+            transform: translateX(5px);
+        }
+        /* Seções específicas */
+        #photography {
+            background-color: #0a0a0a;
+        }
+        #video {
+            background-color: #0f0f0f;
+        }
+        #creative {
+            background-color: #0a0a0a;
+        }
+        /* Sobre mim */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-image {
+            height: 450px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(230, 57, 70, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+        .about-image:hover::before {
+            opacity: 1;
+        }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        .skills {
+            margin-top: 2rem;
+        }
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .skill-bar {
+            height: 6px;
+            background-color: var(--highlight);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        .skill-level {
+            height: 100%;
+            width: 0;
+            background-color: var(--accent);
+            border-radius: 3px;
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        /* Contato */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover .contact-icon {
+            background-color: var(--accent);
+            transform: rotate(360deg);
+        }
+        .contact-icon i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .contact-item:hover .contact-icon i {
+            color: var(--text);
+        }
+        /* Formulário */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--secondary);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.2);
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        /* Animação do formulário */
+        .form-group input:focus + label,
+        .form-group textarea:focus + label {
+            color: var(--accent);
+        }
+        /* Rodapé */
+        footer {
+            padding: 3rem 0;
+            background-color: #080808;
+            text-align: center;
+        }
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .footer-logo span {
+            color: var(--accent);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            transition: all 0.4s ease;
+        }
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .social-link i {
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .social-link:hover i {
+            transform: scale(1.2);
+        }
+        .footer-nav {
+            margin: 2rem 0;
+        }
+        .footer-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .footer-nav ul li {
+            margin: 0 1rem;
+        }
+        .footer-nav ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-nav ul li a:hover {
+            color: var(--text);
+        }
+        .copyright {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content, 
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 350px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--background);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 2rem;
+                transition: all 0.3s ease;
+                z-index: 99;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    Sam<span>Novakoski</span>
+                </div>
+                <div class="mobile-toggle">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">Início</a></li>
+                        <li><a href="#photography">Fotografia</a></li>
+                        <li><a href="#video">Vídeos</a></li>
+                        <li><a href="#motion">Motion Design</a></li>
+                        <li><a href="#creative">Criativos</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Criando histórias visuais que impressionam</h1>
+                <p>Fotógrafo, Editor de Vídeo e Motion Designer focado em transformar conceitos criativos em experiências visuais memoráveis.</p>
+                <a href="#portfolio" class="btn">Ver Portfólio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Fotografia -->
+    <section id="photography" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fotografia</h2>
+                <p>Capturo histórias através das lentes, criando imagens que expressam emoção.</p>
+            </div>
+            <div class="project-grid">
+                <!-- Projeto de Fotografia -->
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Série Eventos">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">Eventos</div>
+                        <h3 class="project-title">Série Eventos</h3>
+                        <p class="project-description">Criando histórias envolventes com a fotografia de eventos</p>
+                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Vídeos -->
+    <section id="video" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vídeos</h2>
+                <p>Do conceito à edição final, crio narrativas visuais em movimento que capturam a essência do seu projeto com técnicas profissionais avançadas de edição.</p>
+            </div>
+            <div class="project-grid">
+                <!-- Projeto de Vídeo -->
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Canal Leandro Ladeira">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">Vídeos para Youtube</div>
+                        <h3 class="project-title">Canal Leandro Ladeira</h3>
+                        <p class="project-description">Vídeos para youtube com técnicas avançadas de narrativa e edição profissional</p>
+                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção de Motion Design -->
+    <section id="motion" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Motion Design</h2>
+                <p>Animações e elementos visuais dinâmicos que dão vida às ideias e elevam a experiência visual do espectador.</p>
+            </div>
+            <div class="project-grid">
+                <!-- Projeto de Motion Design -->
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Identidade Animada">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">Animação 2D</div>
+                        <h3 class="project-title">Identidade Animada</h3>
+                        <p class="project-description">Logo animations e elementos de marca em movimento.</p>
+                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Criativos -->
+    <section id="creative" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Criativos & Anúncios</h2>
+                <p>Produções que combinam estratégia e estética para transmitir mensagens de forma impactante.</p>
+            </div>
+            <div class="project-grid">
+                <!-- Projeto Criativo -->
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Infoprodutos">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-category">Infoprodutos</div>
+                        <h3 class="project-title">Criativos para divulgação de infoprodutos</h3>
+                        <p class="project-description">Criativos produzidos para captação de leads com visuais impactantes.</p>
+                        <a href="#" class="project-link">Ver Projeto <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Seção Sobre -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Mim</h2>
+                <p>Conheça um pouco da minha trajetória e do meu processo criativo.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/800" alt="Sam Novakoski">
+                </div>
+                <div class="about-text">
+                    <h3>Olá, sou Sam Novakoski</h3>
+                    <p>Sou um profissional audiovisual com mais de 7 anos de experiência na criação de conteúdo visual. Meu trabalho busca combinar aspectos técnicos e artísticos para criar narrativas visuais impactantes.</p>
+                    <p>Com formação em Marketing e especializações em Edição de Vídeo e Motion Design, desenvolvi projetos para diversos clientes e marcas ao longo da minha carreira, sempre buscando inovação e excelência técnica em fotografia, edição de vídeo e motion design.</p>
+                    <p>Minha abordagem criativa combina uma visão contemporânea e moderna, resultando em um estilo único e reconhecível em cada trabalho.</p>
+                    
+	
+ <!-- Seção Contato -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contato</h2>
+                <p>Gostou do meu trabalho? Entre em contato para conversarmos sobre o seu projeto.</p>
+            </div>
+            <div class="contact-content">
+                <div>
+                    <div class="contact-info">
+                        <h3>Vamos trabalhar juntos</h3>
+                        <p>Estou sempre aberto a novos projetos e oportunidades criativas. Use um dos canais abaixo para entrar em contato.</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>✉</i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>samcontato@proton.me</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📱</i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>+55 (99) 99118-1892</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📍</i>
+                        </div>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>Taguatinga, DF - Brasil</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form action="https://formspree.io/f/xpwdkwjl" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+    
+                            <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+    
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    Sam<span>Novakoski</span>
+                </div>
+                <p>Criando experiências visuais impactantes</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i>📸</i></a>
+                    <a href="#" class="social-link"><i>🎬</i></a>
+                    <a href="#" class="social-link"><i>👤</i></a>
+                    <a href="#" class="social-link"><i>🔗</i></a>
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#photography">Fotografia</a></li>
+                    <li><a href="#video">Vídeos</a></li>
+                    <li><a href="#motion">Motion Design</a></li>
+                    <li><a href="#creative">Criativos</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Sam Novakoski. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navegação Scroll Suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Fechar menu mobile ao clicar
+                if (document.querySelector('nav ul').classList.contains('active')) {
+                    document.querySelector('nav ul').classList.remove('active');
+                }
+            });
+        });
+        
+        // Menu Mobile Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Header Scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animação de elementos na rolagem
+        const sections = document.querySelectorAll('.section');
+        const skillBars = document.querySelectorAll('.skill-level');
+        
+        function checkVisible() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('visible');
+                    
+                    // Animar barras de habilidades se estiver na seção Sobre
+                    if (section.id === 'about') {
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width;
+                        });
+                    }
+                }
+            });
+        }
+        
+        // Checar elementos visíveis no carregamento inicial e durante o scroll
+        window.addEventListener('load', checkVisible);
+        window.addEventListener('scroll', checkVisible);
+    </script>
+</body>
+</html>
